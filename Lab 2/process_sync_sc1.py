@@ -8,10 +8,10 @@ class Request:
     # TODO: Add other necessary methods if required
 
 def start_scheduling(requests, time_quantum,method):
-    if method == 'robin':
-        round_robin(requests, time_quantum)
-    else:
-        second(requests, time_quantum)
+    algorithms = [round_robin, first_come_first_serve]
+    for algorithm in algorithms:
+        algorithm(requests, time_quantum)
+
 
 def round_robin(requests, time_quantum):
     queue = []
@@ -50,10 +50,6 @@ def round_robin(requests, time_quantum):
     #print(f"Average Turnaround Time: {total_turnaround_time/len(requests)}")
 
 
-def second(requests, time_quantum):
-    pass
-    
-    
 
 def first_come_first_serve(requests):
     # This function will handle the first come first serve algorithm
@@ -68,8 +64,9 @@ def first_come_first_serve(requests):
         turnaround_time = waiting_time + burst_time
         waiting_time_sum += waiting_time
         turnaround_time_sum += turnaround_time
+        print(f"Request ID: {request.id}, Waiting Time: {waiting_time}, Turnaround Time: {turnaround_time}, Arrival Time: {arrival_time}")
     #avg waiting time, avg turnaround time
-    return waiting_time_sum / len(requests), turnaround_time_sum / len(requests)
+    print(f"First come first serve:\nAverage waiting time: {waiting_time_sum / len(requests)}\nAverage turnaround time:{turnaround_time_sum / len(requests)}")
 
     
 
