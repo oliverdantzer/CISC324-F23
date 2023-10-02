@@ -55,9 +55,8 @@ def first_come_first_serve(requests):
     arrival_time = 0
     for request in requests:
         waiting_time = elapsed_time - arrival_time
-        elapsed_time += request.processing_time 
-        burst_time = elapsed_time - arrival_time
-        turnaround_time = waiting_time + burst_time
+        elapsed_time += request.processing_time
+        turnaround_time = waiting_time + request.processing_time
 
         waiting_time_sum += waiting_time
         turnaround_time_sum += turnaround_time
