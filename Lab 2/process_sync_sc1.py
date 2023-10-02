@@ -51,6 +51,24 @@ def second(requests, time_quantum):
     
     
 
+def first_come_first_serve(requests):
+    # This function will handle the first come first serve algorithm
+    waiting_time_sum = 0
+    turnaround_time_sum = 0
+    time = 0
+    for request in requests:
+        arrival_time = time
+        time += request.processing_time
+        burst_time = time - arrival_time
+        waiting_time = time
+        turnaround_time = waiting_time + burst_time
+        waiting_time_sum += waiting_time
+        turnaround_time_sum += turnaround_time
+    #avg waiting time, avg turnaround time
+    return waiting_time_sum / len(requests), turnaround_time_sum / len(requests)
+
+    
+
 def generate_random_requests(num_requests=20):
     import random
     
