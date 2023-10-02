@@ -56,13 +56,14 @@ def first_come_first_serve(requests):
     # This function will handle the first come first serve algorithm
     waiting_time_sum = 0
     turnaround_time_sum = 0
-    time = 0
+    elapsed_time = 0
+    arrival_time = 0
     for request in requests:
-        arrival_time = time
-        time += request.processing_time
-        burst_time = time - arrival_time
-        waiting_time = time
+        waiting_time = elapsed_time - arrival_time
+        elapsed_time += request.processing_time 
+        burst_time = elapsed_time - arrival_time
         turnaround_time = waiting_time + burst_time
+
         waiting_time_sum += waiting_time
         turnaround_time_sum += turnaround_time
         print(f"Request ID: {request.id}, Waiting Time: {waiting_time}, Turnaround Time: {turnaround_time}, Arrival Time: {arrival_time}")
