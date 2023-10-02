@@ -16,7 +16,6 @@ def start_scheduling(requests, time_quantum,method):
 def round_robin(requests, time_quantum):
     queue = []
     turnaround = {}
-    arrival_times = {} 
     elapsed_time = 0
     total_turnaround_time = 0
     total_wait_time = 0
@@ -26,22 +25,18 @@ def round_robin(requests, time_quantum):
     while (len(queue)>0):
         req = queue.pop(0)
         if(req.remaining_time > time_quantum):
-            if (req.id not in arrival_times):
-                arrival_times[req.id] = elapsed_time
             req.remaining_time -= time_quantum
             elapsed_time+= time_quantum
            
             queue.append(req)
         else:
-            if (req.id not in arrival_times):
-                arrival_times[req.id] = elapsed_time
             elapsed_time+=req.remaining_time
             req.remaining_time = 0
-            turnaround[req.id] = elapsed_time - arrival_times[req.id]
+            turnaround[req.id] = elapsed_time 
             req.wait_time = turnaround[req.id] - req.processing_time
     
     for req in requests:
-        print(f"Request ID: {req.id}, Arrival Time: {arrival_times[req.id]} Waiting Time: {req.wait_time}, Turnaround Time: {turnaround[req.id]}")
+        print(f"Request ID: {req.id}, Waiting Time: {req.wait_time}, Turnaround Time: {turnaround[req.id]}")
         total_wait_time += req.wait_time
         total_turnaround_time += turnaround[req.id]
         #req.wait_time = 0
