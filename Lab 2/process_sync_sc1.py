@@ -65,7 +65,7 @@ def first_come_first_serve(requests):
         waiting_time_sum += waiting_time
         turnaround_time_sum += turnaround_time
     #avg waiting time, avg turnaround time
-    return waiting_time_sum / len(requests), turnaround_time_sum / len(requests)
+    print(f"First come first serve:\nAverage waiting time: {waiting_time_sum / len(requests)}\nAverage turnaround time:{turnaround_time_sum / len(requests)}")
 
     
 
