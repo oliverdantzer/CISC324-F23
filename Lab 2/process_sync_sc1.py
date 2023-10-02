@@ -8,9 +8,10 @@ class Request:
     # TODO: Add other necessary methods if required
 
 def start_scheduling(requests, time_quantum,method):
-    algorithms = [round_robin, first_come_first_serve]
-    for algorithm in algorithms:
-        algorithm(requests, time_quantum)
+    print("Round robin:")
+    round_robin(requests, time_quantum)
+    print("First come first serve:")
+    first_come_first_serve(requests)
 
 
 def round_robin(requests, time_quantum):
@@ -46,8 +47,8 @@ def round_robin(requests, time_quantum):
         total_turnaround_time += turnaround[req.id]
         #req.wait_time = 0
         #req.remaining_time = req.processing_time
-    #print(f"Average Waiting Time: {total_wait_time/len(requests)}")
-    #print(f"Average Turnaround Time: {total_turnaround_time/len(requests)}")
+    print(f"Average Waiting Time: {total_wait_time/len(requests)}")
+    print(f"Average Turnaround Time: {total_turnaround_time/len(requests)}")
 
 
 
@@ -66,7 +67,7 @@ def first_come_first_serve(requests):
         turnaround_time_sum += turnaround_time
         print(f"Request ID: {request.id}, Waiting Time: {waiting_time}, Turnaround Time: {turnaround_time}, Arrival Time: {arrival_time}")
     #avg waiting time, avg turnaround time
-    print(f"First come first serve:\nAverage waiting time: {waiting_time_sum / len(requests)}\nAverage turnaround time:{turnaround_time_sum / len(requests)}")
+    print(f"Average waiting time: {waiting_time_sum / len(requests)}\nAverage turnaround time:{turnaround_time_sum / len(requests)}")
 
     
 
