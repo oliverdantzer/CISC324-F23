@@ -44,8 +44,8 @@ def round_robin(requests, time_quantum, arrivals):
         print(f"Request ID: {req.id}, Arrival Time: {arrivals[req.id]} Waiting Time: {req.wait_time}, Turnaround Time: {turnaround[req.id]}")
         total_wait_time += req.wait_time
         total_turnaround_time += turnaround[req.id]
-        #req.wait_time = 0
-        #req.remaining_time = req.processing_time
+        req.wait_time = 0
+        req.remaining_time = req.processing_time
     print(f"Average Waiting Time: {total_wait_time/len(requests)}")
     print(f"Average Turnaround Time: {total_turnaround_time/len(requests)}")
 
@@ -100,22 +100,31 @@ def main():
         arrivals[i] = random.randint(0,10)
     
 
-    print('\n**************Test case# 1**************\n')
-    # Displaying generated requests
-    for req in requests_tc1:
-        print(f"Request ID: {req.id}, Processing Time: {req.processing_time}")
+    # print('\n**************Test case# 1**************\n')
+    # # Displaying generated requests
+    # for req in requests_tc1:
+    #     print(f"Request ID: {req.id}, Processing Time: {req.processing_time}")
 
-    time_quantum = 3  # You can adjust this value based on requirements
-    start_scheduling(requests_tc1, time_quantum,arrivals,"robin")
+    # time_quantum = 3  # You can adjust this value based on requirements
+    # start_scheduling(requests_tc1, time_quantum,arrivals,"robin")
 
 
-    print('\n**************Test case# 2**************\n')
-    # Displaying generated requests
-    for req in requests_tc2:
-        print(f"Request ID: {req.id}, Processing Time: {req.processing_time}")
+    # print('\n**************Test case# 2**************\n')
+    # # Displaying generated requests
+    # for req in requests_tc2:
+    #     print(f"Request ID: {req.id}, Processing Time: {req.processing_time}")
 
-    time_quantum = 3  # You can adjust this value based on requirements
-    start_scheduling(requests_tc2, time_quantum,arrivals,"robin")
+    # time_quantum = 3  # You can adjust this value based on requirements
+    # start_scheduling(requests_tc2, time_quantum,arrivals,"robin")
+
+    for time_quantum in ([1,3,7]):
+        #print value of time quantum
+        print(f"Time quantum: {time_quantum}")
+        # Displaying generated requests
+        for req in requests:
+            print(f"Request ID: {req.id}, Processing Time: {req.processing_time}")
+
+        start_scheduling(requests, time_quantum,arrivals,"robin")
 
     # TODO: Calculate and display the average waiting time and average turnaround time
 
