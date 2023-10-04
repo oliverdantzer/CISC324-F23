@@ -96,7 +96,7 @@ def main():
     arrivals = {}
 
     #generate random arrival times
-    for i in range(20):
+    for i in range(len(requests)):
         arrivals[i] = random.randint(0,10)
     
 
