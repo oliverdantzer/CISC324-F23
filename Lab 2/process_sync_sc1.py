@@ -22,7 +22,7 @@ def round_robin(requests, time_quantum, arrivals):
     total_wait_time = 0
     for req in requests:
         queue.append(req)
-        queue.sort(key=lambda x: arrivals[x.id])
+    queue.sort(key=lambda x: arrivals[x.id])
     
     while (len(queue)>0):
         if (elapsed_time >= arrivals[queue[0].id]):
